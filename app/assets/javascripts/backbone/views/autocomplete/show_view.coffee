@@ -7,6 +7,7 @@ class Backcomplete.Views.Autocomplete.ShowView extends Backbone.View
     options ||= {}
     @collection = options.collection || new Backcomplete.Collections.SearchResultsCollection()
     @value_property = options.value_property || "name"
+    @category_property = options.category_property || "category"
 
   render: ->
     # huge method that need refactoring

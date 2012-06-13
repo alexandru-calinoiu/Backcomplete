@@ -10,3 +10,9 @@ describe "show", ->
       collection = new Backcomplete.Collections.SearchResultsCollection()
       view = new Backcomplete.Views.Autocomplete.ShowView({ collection: collection })
       expect(view.collection).toEqual(collection)
+    it "should set the category_property to defaut", ->
+      view = new Backcomplete.Views.Autocomplete.ShowView()
+      expect(view.category_property).toEqual("category")
+    it "should set category_property from options", ->
+      view = new Backcomplete.Views.Autocomplete.ShowView({ category_property: "some_category_property" })
+      expect(view.category_property).toEqual("some_category_property")
