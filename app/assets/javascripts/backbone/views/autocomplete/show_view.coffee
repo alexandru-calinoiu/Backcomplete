@@ -11,11 +11,11 @@ class Backcomplete.Views.Autocomplete.ShowView extends Backbone.View
 
   render: ->
     # huge method that need refactoring
-    $(@el).autocomplete({ source: @autoCompleteSource }).data('autocomplete')._renderMenu = @renderMenu
+    $(@el).autocomplete({ source: @_autoCompleteSource }).data('autocomplete')._renderMenu = @_renderMenu
 
     return this
 
-  autoCompleteSource: (request, response) =>
+  _autoCompleteSource: (request, response) =>
     @collection.fetch(request.term, {
     success: (collection, resp) =>
       response(_.map(collection.models, (model) =>
@@ -27,7 +27,7 @@ class Backcomplete.Views.Autocomplete.ShowView extends Backbone.View
       ))
     })
 
-  renderMenu: (ul, items) ->
+  _renderMenu: (ul, items) ->
     currentCategory = ""
     _.each(items, (item) =>
       if (item.category != currentCategory)
