@@ -1,5 +1,7 @@
 Backcomplete::Application.routes.draw do
-  resources :search, :only => :index
+  get '/search/:term' => 'search#index', :as => :search
+
+  root :to => "search#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,2 +1,7 @@
-%h1 Search#index
-%p Find me in app/views/search/index.html.haml
+#placeholder
+
+:javascript
+  $(function() {
+    window.router = new Backcomplete.Routers.SearchRouter({results: #{@results.to_json()}});
+    Backbone.history.start();
+  });

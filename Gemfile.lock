@@ -139,6 +139,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  execjs
   haml-rails
   haml_coffee_assets
   jasminerice

@@ -1,8 +1,9 @@
 class Backcomplete.Models.SearchResult extends Backbone.Model
   paramRoot: 'search_result'
 
-  defaults:
-
 class Backcomplete.Collections.SearchResultsCollection extends Backbone.Collection
   model: Backcomplete.Models.SearchResult
-  url: '/search_results'
+  url: => "/search/#{@searchTerm}"
+  fetch: (searchTerm, options) =>
+    @searchTerm = searchTerm
+    Backbone.Collection.prototype.fetch.call(this, options)
