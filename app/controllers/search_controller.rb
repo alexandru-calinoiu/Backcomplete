@@ -19,7 +19,7 @@ class SearchController < ApplicationController
   private
 
   def search(term)
-    collection = [SearchResult.new("old", "c"), SearchResult.new("old", "pascal"), SearchResult.new("new", "ruby"), SearchResult.new("new", "python")]
+    collection = [SearchResult.new("old", "c"), SearchResult.new("old", "pascal"), SearchResult.new("new", "ruby"), SearchResult.new("new", "python"), SearchResult.new("new", "clojure")]
 
     collection.select { |i| (i.name =~ /#{term}/) }
   end

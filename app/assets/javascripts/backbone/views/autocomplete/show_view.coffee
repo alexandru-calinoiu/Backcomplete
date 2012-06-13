@@ -13,17 +13,21 @@ class Backcomplete.Views.Autocomplete.ShowView extends Backbone.View
     source: (request, response) =>
       @collection.fetch(request.term, {
       success: (collection, resp) =>
-        response($.map(collection.models, (model) =>
+        response(_.map(collection.models, (model) =>
           {
           label: model.get(@value_property)
           value: model.get(@value_property)
+          category: model.get("category")
           }
         ))
       })
-    }).data('autocomplete')._renderItem = (ul, item) =>
-      $('<li/>')
-      .data('item.autocomplete', item.value)
-      .append($('<a/>').text(item.value))
-      .appendTo(ul)
+    }).data('autocomplete')._renderMenu = (ul, items) ->
+      currentCategory = "";
+      _.each(items, (item) =>
+        if (item.category != currentCategory)
+          ul.append( "<li class='ui-menu-category'>" + item.category + "</li>")
+        currentCategory = item.category
+        this._renderItem(ul, item)
+      )
 
     return this

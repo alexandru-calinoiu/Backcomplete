@@ -1,3 +1,11 @@
-// Place all the styles related to the search controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+ul.ui-autocomplete {
+  list-style-type: none;
+}
+
+li.ui-menu-item {
+  margin-left: 10px
+}
+
+li.ui-menu-category {
+  font-weight: bold;
+}
