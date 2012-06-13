@@ -9,6 +9,7 @@ class Backcomplete.Views.Autocomplete.ShowView extends Backbone.View
     @value_property = options.value_property || "name"
 
   render: ->
+    # huge method that need refactoring
     $(@el).autocomplete({
     source: (request, response) =>
       @collection.fetch(request.term, {
