@@ -16,14 +16,13 @@ class Backcomplete.Views.Autocomplete.ShowView extends Backbone.View
 
   initialize: (options) ->
     options ||= {}
-    @collection = options.collection || new Backcomplete.Collections.SearchResultsCollection()
-    @value_property = options.value_property || "name"
-    @category_property = options.category_property || "category"
+    @collection = options.collection || new Backbone.Collection.extend()
+    @valueProperty = options.valueProperty || "name"
+    @categoryProperty = options.categoryProperty || "category"
 
   render: ->
-    # huge method that need refactoring
-    $(@el).autocomplete({ source: @_autoCompleteSource }).data('autocomplete')._renderMenu = @_renderMenu
-
+    autocomplete = $(@el).autocomplete({ source: @_autoCompleteSource }).data('autocomplete')
+    autocomplete._renderMenu = @_renderMenu
     return this
 
   _autoCompleteSource: (request, response) =>
@@ -31,8 +30,8 @@ class Backcomplete.Views.Autocomplete.ShowView extends Backbone.View
     success: (collection, resp) =>
       response(_.map(collection.models, (model) =>
         {
-        label: model.get(@value_property)
-        value: model.get(@value_property)
+        label: model.get(@valueProperty)
+        value: model.get(@valueProperty)
         category: model.get("category")
         }
       ))
