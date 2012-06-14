@@ -1,3 +1,14 @@
+#render_item
+#render_menu
+#
+#don't render categories (just go with the default)
+#
+#bind to the select
+#
+#html5 attributes
+#
+#change to camel case
+
 Backcomplete.Views.Autocomplete ||= {}
 
 class Backcomplete.Views.Autocomplete.ShowView extends Backbone.View
