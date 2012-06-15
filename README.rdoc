@@ -1,3 +1,38 @@
 == Welcome to Backautocomplete
 
 It's a simple backbone wrapper for the autocomplete control in jqueryui
+
+== Usage
+
+You can use it out of the box by creating a new instance and supplying a collection
+
+    new Backcomplete.Views.Autocomplete.ShowView({ collection: new Backcomplete.Collections.SearchResultsCollection() })
+
+To pass html attributes into the generated input using the html option
+
+    new Backcomplete.Views.Autocomplete.ShowView({ html: { autofocus: "autofocus" } })
+
+To override the default render functions use renderItem, renderMenu or renderNoResult option
+
+    new Backcomplete.Views.Autocomplete.ShowView({
+      collection: new Backcomplete.Collections.SearchResultsCollection()
+      renderMenu: (ul, items) ->
+        _.each(items, (item) =>
+          this._renderItem(ul, item)
+        )
+      renderItem: (ul, item) ->
+        $("<li class='ui-menu-item'></li>")
+        .data("item.autocomplete", item)
+        .append("<strong>#{item.name}</strong>")
+        .appendTo(ul);
+      renderNoResult: (ul) ->
+        ul.append("<span>No items, do something about it</span>")
+    })
+
+Of course you can handle the select event
+
+    simpleView = new Backcomplete.Views.Autocomplete.ShowView({
+      collection: new Backcomplete.Collections.SearchResultsCollection()
+      select: (event, ui) ->
+        console.log "Hey, you've just selected #{ui.item.name}"
+    })
