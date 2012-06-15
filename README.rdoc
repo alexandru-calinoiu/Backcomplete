@@ -36,3 +36,17 @@ Of course you can handle the select event
       select: (event, ui) ->
         console.log "Hey, you've just selected #{ui.item.name}"
     })
+
+== Bugs
+
+Feel free to open a issue if you find any, feel even freear to fork and fix
+
+== License
+
+Free of use for commercial or non-commercial applications
+
+== Warranty
+
+This software is provided "as is" and without any express or implied
+warranties, including, without limitation, the implied warranties of
+merchantability and fitness for a particular purpose.
