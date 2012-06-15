@@ -6,6 +6,8 @@ class Backcomplete.Routers.SearchRouter extends Backbone.Router
     simpleView = new Backcomplete.Views.Autocomplete.ShowView({
       collection: new Backcomplete.Collections.SearchResultsCollection()
       html: { autofocus: "autofocus" }
+      select: (event, ui) ->
+        console.log "Hey, you've just selected #{ui.item.name}"
     })
     $("#placeholder").html(simpleView.render().el)
 

@@ -1,7 +1,3 @@
-#bind to the select
-#
-#html5 attributes
-
 Backcomplete.Views.Autocomplete ||= {}
 
 class Backcomplete.Views.Autocomplete.ShowView extends Backbone.View
@@ -16,15 +12,18 @@ class Backcomplete.Views.Autocomplete.ShowView extends Backbone.View
     @renderMenu = options.renderMenu || @_renderMenu
     @renderNoResult = options.renderNoResult
     @html = options.html || {}
+    @select = options.select
 
   render: ->
     element = $(@el)
-    autocomplete = element.autocomplete({ source: @_autoCompleteSource }).data('autocomplete')
+    autocomplete = element.autocomplete({
+      source: @_autoCompleteSource
+      select: @select
+    }).data('autocomplete')
     autocomplete._renderMenu = @renderMenu
     autocomplete._renderItem = @renderItem
 
     $.each(@html, (key, value) -> element.attr(key, value) )
-
     return this
 
   _autoCompleteSource: (request, response) =>
